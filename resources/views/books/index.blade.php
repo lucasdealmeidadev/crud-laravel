@@ -1,5 +1,5 @@
 @extends('templates.template')
-@section('title', $title)
+@section('title', 'Home')
 @section('content')
     <div class="container">
         <div class="text-center mt-3 mb-4">
@@ -23,18 +23,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($books))
+                            @if($books->count() > 0)
                                 @foreach($books as $book)
-                                    @php
-                                        $user = $book->find($book->id)->relUsers;
-                                    @endphp
                                     <tr>
                                         <td scope="row">{{$book->id}}</td>
                                         <td>{{$book->title}}</td>
-                                        <td>{{$user->name}}</td>
+                                        <td>{{$book->relUsers->name}}</td>
                                         <td>{{$book->price}}</td>
                                         <td class="text-center">
-                                            <a href="{{url("#")}}" style="text-decoration: none;">
+                                            <a href="{{url("books/$book->id")}}" style="text-decoration: none;">
                                                 <button class="btn btn-dark">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
