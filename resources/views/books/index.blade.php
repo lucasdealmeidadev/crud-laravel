@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="text-center mt-3 mb-4">
-            <a href="#">
+            <a href="{{url('books/create')}}">
                 <button class="btn btn-success">
                     <i class="fas fa-plus"></i> Cadastro
                 </button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -17,7 +18,7 @@ class BookController extends Controller
         $books = Book::all()->sortByDesc('id');
         return view('books/index', compact('books'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +26,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all()->sortBy('name');
+        return view('books/create', compact('users'));
     }
 
     /**
@@ -36,7 +38,11 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Book::create($request->all())){
+            return redirect('books/create')->with('success', 'Livro cadastrado com sucesso!');
+        }else{
+            return redirect('books/create')->with('error', 'Ocorreu um erro, tente novamente!');
+        }
     }
 
     /**
