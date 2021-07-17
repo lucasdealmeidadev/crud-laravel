@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="price" id="price" value="{{ old('price') }}" placeholder="Preço:" required onKeyPress="return(inputmask(this,'.',',',event))">
+                        <input class="form-control" type="text" name="price" id="price" value="{{ old('price') }}" placeholder="Preço:" required>
                         
                         @error('price')
                             <div class="text-danger">{{ $message }}</div>

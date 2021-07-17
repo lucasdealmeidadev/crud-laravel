@@ -37,7 +37,7 @@
                                                 </button>
                                             </a>
 
-                                            <a href="{{url("#")}}" style="text-decoration: none;">
+                                            <a href="{{url("books/$book->id/edit")}}" style="text-decoration: none;">
                                                 <button class="btn btn-primary">
                                                     <i class="fas fa-edit"></i>
                                                 </button>

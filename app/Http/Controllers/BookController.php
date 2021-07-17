@@ -38,9 +38,9 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        if(Book::create($request->all())){
+        if (Book::create($request->all())) {
             return redirect('books/create')->with('success', 'Livro cadastrado com sucesso!');
-        }else{
+        } else {
             return redirect('books/create')->with('error', 'Ocorreu um erro, tente novamente!');
         }
     }
@@ -65,7 +65,10 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::find($id);
+        $users = User::all();
+
+        return view('books/edit', compact('book', 'users'));
     }
 
     /**
@@ -77,7 +80,18 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, $id)
     {
-        //
+        $update = Book::where(['id' => $id])->update([
+            'title'   => $request->title,
+            'id_user' => $request->id_user,
+            'pages'   => $request->pages,
+            'price'   => $request->price
+        ]);
+
+        if ($update) {
+            return redirect("books/$id/edit")->with('success', 'Livro editado com sucesso!');
+        } else {
+            return redirect("books/$id/edit")->with('error', 'Ocorreu um erro, tente novamente!');
+        }
     }
 
     /**
