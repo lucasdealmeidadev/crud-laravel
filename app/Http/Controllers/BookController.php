@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -16,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all()->sortByDesc('id');
+        $books = Book::orderby('id', 'desc')->paginate(10); 
         return view('books/index', compact('books'));
     }
 

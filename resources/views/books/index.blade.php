@@ -64,5 +64,10 @@
                 </div> 
             </div>           
         </div>
+        @if($books->count() > 0)
+            <div class="d-flex justify-content-center">
+                {{ $books->links() }}
+            </div>
+        @endif
     </div>
 @endsection
