@@ -9,6 +9,10 @@
                 </button>
             </a>
         </div>
+
+        @component('alerts.messages')
+        @endcomponent
+
         <div class="row">
             <div class="table-responsive">
                 <div class="col-12 m-auto">
@@ -31,23 +35,22 @@
                                         <td>{{$book->relUsers->name}}</td>
                                         <td>{{$book->price}}</td>
                                         <td class="text-center">
-                                            <a href="{{url("books/$book->id")}}" style="text-decoration: none;">
-                                                <button class="btn btn-dark">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
+                                            <a href="{{url("books/$book->id")}}" class="btn btn-dark">
+                                                <i class="fas fa-eye"></i>
                                             </a>
-
-                                            <a href="{{url("books/$book->id/edit")}}" style="text-decoration: none;">
-                                                <button class="btn btn-primary">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
+                                                
+                                            <a href="{{url("books/$book->id/edit")}}" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
                                             </a>
+                                            
+                                            <form method="POST" action="{{url("books/$book->id")}}" style="display: contents;">
+                                                @method('DELETE')
+                                                @csrf
 
-                                            <a href="{{url("#")}}" style="text-decoration: none;">
-                                                <button class="btn btn-danger">
+                                                <button class="btn btn-danger delete-book" type="submit">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                            </a>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -102,6 +103,10 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Book::destroy($id)){
+            return redirect('books')->with('success', 'Registro apagado sucesso!');
+        }else{
+            return redirect('books')->with('error', 'Ocorreu um erro, tente novamente!');
+        }
     }
 }
