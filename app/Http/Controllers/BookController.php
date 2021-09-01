@@ -16,7 +16,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::orderby('id', 'desc')->paginate(10); 
-        return view('books/index', compact('books'));
+        return view('books.index', compact('books'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BookController extends Controller
     public function create()
     {
         $users = User::all()->sortBy('name');
-        return view('books/create', compact('users'));
+        return view('books.create', compact('users'));
     }
 
     /**
@@ -54,7 +54,7 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        return view('books/show', compact('book'));
+        return view('books.show', compact('book'));
     }
 
     /**
@@ -68,7 +68,7 @@ class BookController extends Controller
         $book = Book::find($id);
         $users = User::all();
 
-        return view('books/edit', compact('book', 'users'));
+        return view('books.edit', compact('book', 'users'));
     }
 
     /**

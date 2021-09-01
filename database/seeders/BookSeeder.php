@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Book;
 
@@ -30,7 +32,7 @@ class BookSeeder extends Seeder
             'title'   => 'Código Limpo',
             'pages'   => '200',
             'price'   => '201.00',
-            'id_user' => '2',
+            'id_user' => '3',
         ]);
     }
 }
